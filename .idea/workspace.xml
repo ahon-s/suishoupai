@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1647d721-91b9-481c-9b87-fb3baea1f409" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+    <option name="PARALLEL_COMPILATION" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/my-suishoupai-project" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../Tool/apache-maven-3.9.0" />
+        <option name="userSettingsFile" value="D:\Tool\apache-maven-3.9.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2QuSTNAfq8jsDK9pjRE42apzDr3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../imgreporterservice-jbz" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workSpace\company\xiamen-qualityInspection\src\main\java\siwei\ahon\qualityInspection" />
+      <recent name="D:\workSpace\company\xiamen-qualityInspection\src\main\java\siwei\ahon\xiamen-qualityInspection" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="siwei.ahon.qualitySafetyInspection.pojo" />
+      <recent name="siwei.ahon.qualitySafetyInspection.config" />
+      <recent name="siwei.ahon.qualitySafetyInspection.interceptor" />
+      <recent name="siwei.ahon.qualitySafetyInspection.util" />
+      <recent name="siwei.ahon.qualitySafetyInspection.aop" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.QualitySafetyInspectionApplication">
+    <configuration name="QualitySafetyInspectionApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="siwei.ahon.qualitySafetyInspection.QualitySafetyInspectionApplication" />
+      <module name="xiamen-qualitySafetyInspection" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QualitySafetyInspectionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="xiamen-qualitySafetyInspection" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="siwei.ahon.qualitySafetyInspection.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="siwei.ahon.qualitySafetyInspection.QualitySafetyInspectionApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.QualitySafetyInspectionApplication" />
+        <item itemvalue="Application.QualitySafetyInspectionApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1647d721-91b9-481c-9b87-fb3baea1f409" name="Changes" comment="" />
+      <created>1686201982328</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686201982328</updated>
+      <workItem from="1686201984017" duration="5469000" />
+      <workItem from="1686270425149" duration="1192000" />
+      <workItem from="1686271763702" duration="4620000" />
+      <workItem from="1686356801714" duration="602000" />
+      <workItem from="1686360806722" duration="15479000" />
+      <workItem from="1686529811089" duration="18117000" />
+      <workItem from="1686614142595" duration="23582000" />
+      <workItem from="1686702226725" duration="1552000" />
+      <workItem from="1686788787838" duration="3104000" />
+      <workItem from="1686875260523" duration="1199000" />
+      <workItem from="1686961227508" duration="964000" />
+      <workItem from="1687134137918" duration="5479000" />
+      <workItem from="1687142790561" duration="1369000" />
+      <workItem from="1687145926641" duration="31000" />
+      <workItem from="1687326627942" duration="3213000" />
+      <workItem from="1687654300302" duration="594000" />
+      <workItem from="1687677096876" duration="603000" />
+      <workItem from="1687738772700" duration="1234000" />
+      <workItem from="1687825499845" duration="798000" />
+      <workItem from="1687912309368" duration="6241000" />
+      <workItem from="1688085913243" duration="2758000" />
+      <workItem from="1688176721651" duration="884000" />
+      <workItem from="1688178850353" duration="1019000" />
+      <workItem from="1688346246057" duration="593000" />
+      <workItem from="1688367356554" duration="148000" />
+      <workItem from="1688626925915" duration="1213000" />
+      <workItem from="1688775353401" duration="2459000" />
+      <workItem from="1688947935695" duration="5771000" />
+      <workItem from="1689034681332" duration="953000" />
+      <workItem from="1689121819327" duration="828000" />
+      <workItem from="1689207900631" duration="1335000" />
+      <workItem from="1689294505633" duration="595000" />
+      <workItem from="1689641078455" duration="15614000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
