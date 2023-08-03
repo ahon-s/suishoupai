@@ -7,7 +7,7 @@ spring:
 
   redis:
     host: 192.168.246.129
-    database: 11
+    database: 3
     port: 6379
 
   jackson:
@@ -16,11 +16,12 @@ spring:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 
 
 myValue:
   authAddress: http://58.56.207.43:6507/token/searchForUserByToken
+  #修改内容 每个项目对应的地址不同
   isLoginAddress: http://58.56.207.43:6510/isLogin/
-#  isLoginAddress: http://58.56.207.43:6510/isLogin/
+
 

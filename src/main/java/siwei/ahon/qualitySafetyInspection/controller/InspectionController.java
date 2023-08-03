@@ -7,6 +7,7 @@ import siwei.ahon.qualitySafetyInspection.expection.MyResult;
 import siwei.ahon.qualitySafetyInspection.expection.PageData;
 import siwei.ahon.qualitySafetyInspection.model.*;
 import siwei.ahon.qualitySafetyInspection.pojo.PageFilterPojo;
+import siwei.ahon.qualitySafetyInspection.pojo.ProblemStatistics;
 import siwei.ahon.qualitySafetyInspection.service.ProblemService;
 import siwei.ahon.qualitySafetyInspection.service.RectifyService;
 import siwei.ahon.qualitySafetyInspection.service.VerifyService;
@@ -17,7 +18,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/inspection")
+@RequestMapping("/inspection")
 @CrossOrigin(allowedHeaders  = {"*"})
 @Validated
 public class InspectionController {
@@ -57,6 +58,12 @@ public class InspectionController {
     public MyResult getProblemStatus(){
         List<ProblemStatus> problemStatus = problemService.getProblemStatus();
         return MyResult.success(problemStatus);
+    }
+    /**获取问题统计信息*/
+    @GetMapping("getProblemStatistics")
+    public MyResult getProblemStatistics(Integer sectionId, PageFilterPojo pf){
+        List<ProblemStatistics> problemStatistics = problemService.getProblemStatistics(sectionId, pf);
+        return MyResult.success(problemStatistics);
     }
     /**整改模块*/
     @PostMapping("addRectify")
