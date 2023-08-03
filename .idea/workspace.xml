@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1647d721-91b9-481c-9b87-fb3baea1f409" name="Changes" comment="" />
+    <list default="true" id="1647d721-91b9-481c-9b87-fb3baea1f409" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/controller/InspectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/controller/InspectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/dto/Craft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/dto/Craft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/dto/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/dto/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/interceptor/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/interceptor/AuthInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/Impl/ProblemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/Impl/ProblemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/ProblemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/ProblemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/util/UserConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/util/UserConfigUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/controller/InspectionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/controller/InspectionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/dto/Craft.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/dto/Craft.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/dto/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/dto/UserInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/interceptor/AuthInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/interceptor/AuthInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/ProblemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/ProblemServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/ProblemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/ProblemService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/util/UserConfigUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/util/UserConfigUtils.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +40,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/my-suishoupai-project" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -45,7 +62,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2QuSTNAfq8jsDK9pjRE42apzDr3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -147,7 +166,20 @@
       <workItem from="1689121819327" duration="828000" />
       <workItem from="1689207900631" duration="1335000" />
       <workItem from="1689294505633" duration="595000" />
-      <workItem from="1689641078455" duration="15614000" />
+      <workItem from="1689641078455" duration="16371000" />
+      <workItem from="1689726369617" duration="4642000" />
+      <workItem from="1689813242137" duration="1928000" />
+      <workItem from="1689836922182" duration="1970000" />
+      <workItem from="1689899326614" duration="2265000" />
+      <workItem from="1689985771106" duration="594000" />
+      <workItem from="1690158624359" duration="1191000" />
+      <workItem from="1690244590429" duration="596000" />
+      <workItem from="1690331538035" duration="1792000" />
+      <workItem from="1690767007633" duration="10001000" />
+      <workItem from="1690849626021" duration="704000" />
+      <workItem from="1690850701587" duration="15585000" />
+      <workItem from="1690935975154" duration="11412000" />
+      <workItem from="1691022342586" duration="597000" />
     </task>
     <servers />
   </component>

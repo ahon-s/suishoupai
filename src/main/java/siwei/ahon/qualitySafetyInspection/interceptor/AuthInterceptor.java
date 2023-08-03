@@ -38,6 +38,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         String token = request.getHeader("token");
+        if (isEmpty(token)) throw new BaseException("请传入用户token");
         if (redisUtils.hasKey(token)) {
             JSONObject bodyObject = (JSONObject) JSONObject.toJSON(redisUtils.get(token));
             String status = bodyObject.getString("status");

@@ -5,6 +5,8 @@ import siwei.ahon.qualitySafetyInspection.model.Problem;
 import siwei.ahon.qualitySafetyInspection.model.ProblemStatus;
 import siwei.ahon.qualitySafetyInspection.model.ProblemType;
 import siwei.ahon.qualitySafetyInspection.pojo.PageFilterPojo;
+import siwei.ahon.qualitySafetyInspection.pojo.ProblemStatistics;
+
 
 import java.util.List;
 
@@ -13,4 +15,8 @@ public interface ProblemService {
     PageData<Problem> getProblemList(Problem problem, PageFilterPojo pf);
     List<ProblemStatus> getProblemStatus();
     List<ProblemType> getProblemType();
+
+    List<ProblemStatistics> getProblemStatistics(Integer sectionId,  PageFilterPojo pf);
+
+
 }
