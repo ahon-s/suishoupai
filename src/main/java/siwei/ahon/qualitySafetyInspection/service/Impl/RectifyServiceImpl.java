@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.util.ObjectUtils.isEmpty;
-import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
+//import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
 
 @Service
 public class RectifyServiceImpl implements RectifyService {
@@ -43,7 +43,7 @@ public class RectifyServiceImpl implements RectifyService {
         problem.setStatus(2);
         rectify.setStatus(1);
         problemMapper.updateById(problem);
-        rectify.setNickName(UserLoginInfo(request));
+//        rectify.setNickName(UserLoginInfo(request));
         rectifyMapper.insert(rectify);
         return rectify.getId();
     }

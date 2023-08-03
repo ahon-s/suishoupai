@@ -34,7 +34,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.springframework.util.StringUtils.isEmpty;
-import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
+//import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
 import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.getLoginSections;
 
 @Service
@@ -61,7 +61,7 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public Integer addProblem(Problem problem) {
         problem.setStatus(problem.getRectify() == 1 ? 3 : 1);
-        problem.setNickName(UserLoginInfo(request));
+//        problem.setNickName(UserLoginInfo(request));
         problemMapper.insert(problem);
         return problem.getId();
     }

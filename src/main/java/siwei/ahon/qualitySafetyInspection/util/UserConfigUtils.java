@@ -30,20 +30,20 @@ public class UserConfigUtils {
         UserConfigUtils.isLoginAddress = isLoginAddress;
     }
 
-    public static String UserLoginInfo(HttpServletRequest request){
-        String token = request.getHeader("token");
-        HashMap<String, String> map = new HashMap<>();
-        map.put("token",token);
-        map.put("Content-Type","application/x-www-form-urlencoded");
-        HttpRequest httpRequest = HttpRequest.get(isLoginAddress).addHeaders(map);
-        String body = httpRequest.execute().body();
-        JSONObject bodyJson = JSONObject.parseObject(body);
-        if (bodyJson.getString("code").equals("0")&&!isEmpty(bodyJson.getString("data"))){
-            String nickName = bodyJson.getJSONObject("data").getString("nickName");
-            return nickName;
-        }
-        return null;
-    }
+//    public static String UserLoginInfo(HttpServletRequest request){
+//        String token = request.getHeader("token");
+//        HashMap<String, String> map = new HashMap<>();
+//        map.put("token",token);
+//        map.put("Content-Type","application/x-www-form-urlencoded");
+//        HttpRequest httpRequest = HttpRequest.get(isLoginAddress).addHeaders(map);
+//        String body = httpRequest.execute().body();
+//        JSONObject bodyJson = JSONObject.parseObject(body);
+//        if (bodyJson.getString("code").equals("0")&&!isEmpty(bodyJson.getString("data"))){
+//            String nickName = bodyJson.getJSONObject("data").getString("nickName");
+//            return nickName;
+//        }
+//        return null;
+//    }
     public static void getLoginSections(HttpServletRequest request){
         String token = request.getHeader("token");
         if (redisUtils.hasKey("sections-"+token)) return;

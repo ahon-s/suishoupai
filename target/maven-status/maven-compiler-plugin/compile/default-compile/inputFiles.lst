@@ -5,6 +5,7 @@ D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qua
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\annotation\MyTestAnnotation.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\aop\AuthAop.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\expection\PageData.java
+D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\dto\TokenSections.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\mapper\ProblemStatusMapper.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\model\ProblemType.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\util\RedisUtils.java
@@ -12,6 +13,7 @@ D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qua
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\mapper\ProblemTypeMapper.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\expection\MyResult.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\service\ProblemService.java
+D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\pojo\ProblemStatistics.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\QualitySafetyInspectionApplication.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\expection\BaseException.java
 D:\workSpace\company\xiamen-qualitySafetyInspection\src\main\java\siwei\ahon\qualitySafetyInspection\pojo\PageFilterPojo.java

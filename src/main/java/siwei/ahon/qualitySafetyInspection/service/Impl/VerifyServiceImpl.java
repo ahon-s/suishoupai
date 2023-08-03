@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.util.ObjectUtils.isEmpty;
-import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
+//import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
 
 @Service
 public class VerifyServiceImpl implements VerifyService {
@@ -53,7 +53,7 @@ public class VerifyServiceImpl implements VerifyService {
         rectify.setStatus(verify.getRectify() == 1 ? 2 : 3);
         problemMapper.updateById(problem);
         rectifyMapper.updateById(rectify);
-        verify.setNickName(UserLoginInfo(request));
+//        verify.setNickName(UserLoginInfo(request));
         verifyMapper.insert(verify);
         return verify.getId();
     }
