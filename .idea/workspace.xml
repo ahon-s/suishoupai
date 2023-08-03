@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1647d721-91b9-481c-9b87-fb3baea1f409" name="Changes" comment="" />
+    <list default="true" id="1647d721-91b9-481c-9b87-fb3baea1f409" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/target/xiamen-qualitySafetyInspection-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/xiamen-qualitySafetyInspection-1.0-SNAPSHOT.jar.original" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -162,7 +164,7 @@
       <workItem from="1690849626021" duration="704000" />
       <workItem from="1690850701587" duration="15585000" />
       <workItem from="1690935975154" duration="11412000" />
-      <workItem from="1691022342586" duration="6090000" />
+      <workItem from="1691022342586" duration="6404000" />
     </task>
     <servers />
   </component>
