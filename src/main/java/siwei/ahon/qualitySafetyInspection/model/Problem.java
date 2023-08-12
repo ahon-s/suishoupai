@@ -23,27 +23,27 @@ public class Problem extends BaseModel {
     @TableId(type = IdType.AUTO)
     Integer id;
     @FilterFiled(type = FilterTypeEnum.EQ)
-    @NotBlank
+    @NotBlank(message = "提交人不能为空")
     String submitter;
     @FilterFiled(type = FilterTypeEnum.EQ)
     String nickName;
 
     String submitterSection;
-    @NotBlank
+    @NotBlank(message = "备注不能为空")
     String description;
-    @NotNull
+    @NotNull(message = "经纬度不能为空")
     Double lat;
-    @NotNull
+    @NotNull(message = "经纬度不能为空")
     Double lng;
     @NotBlank
     String pictureUrl;
-    @NotNull
+    @NotNull(message = "类型不能为空")
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer type;
     @NotNull
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer sectionId;
-    @NotNull
+    @NotNull(message = "类型不能为空")
     Integer rectify;
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer status;

@@ -24,7 +24,7 @@ import java.util.Date;
 public class Rectify extends BaseModel {
     @TableId(type = IdType.AUTO)
     Integer id;
-    @NotBlank
+    @NotBlank(message = "整改人不能为空")
     @FilterFiled(type = FilterTypeEnum.EQ)
     String rectifier;
     @FilterFiled(type = FilterTypeEnum.EQ)
@@ -34,9 +34,9 @@ public class Rectify extends BaseModel {
     @NotNull
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer problemId;
-    @NotBlank
+    @NotBlank(message = "备注不能为空")
     String description;
-    @NotBlank
+    @NotBlank(message = "图片不能为空")
     String pictureUrl;
     Integer status;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")

@@ -1,5 +1,6 @@
 package siwei.ahon.qualitySafetyInspection.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -20,8 +21,10 @@ import siwei.ahon.qualitySafetyInspection.service.VerifyService;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.List;
+
 import static org.springframework.util.ObjectUtils.isEmpty;
-//import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
+import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
 
 @Service
 public class VerifyServiceImpl implements VerifyService {
@@ -46,14 +49,18 @@ public class VerifyServiceImpl implements VerifyService {
     public Integer addVerify(Verify verify) {
         Problem problem = problemMapper.selectById(verify.getProblemId());
         Rectify rectify = rectifyMapper.selectById(verify.getRectifyId());
+
+        List<Verify> preVerify = verifyMapper.selectList(new LambdaQueryWrapper<Verify>().eq(Verify::getRectifyId, verify.getRectifyId()));
         if (isEmpty(problem)) throw new BaseException("不存在对应问题");
         if (isEmpty(rectify)) throw new BaseException("不存在对应整改记录");
         if (rectify.getProblemId() != problem.getId()) throw new BaseException("问题与整改记录不匹配");
+        if (problem.getStatus() == 3) throw new BaseException("问题已归档");
+        if (!isEmpty(preVerify)) throw new BaseException("已审阅此整改记录");
         problem.setStatus(verify.getRectify() == 1 ? 3 : 1);
         rectify.setStatus(verify.getRectify() == 1 ? 2 : 3);
         problemMapper.updateById(problem);
         rectifyMapper.updateById(rectify);
-//        verify.setNickName(UserLoginInfo(request));
+        if (isEmpty(verify.getNickName())) verify.setNickName(UserLoginInfo(request));
         verifyMapper.insert(verify);
         return verify.getId();
     }

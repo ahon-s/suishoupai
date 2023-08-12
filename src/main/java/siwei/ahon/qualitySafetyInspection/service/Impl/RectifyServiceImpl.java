@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import siwei.ahon.qualitySafetyInspection.annotation.FilterFiledHelper;
 import siwei.ahon.qualitySafetyInspection.expection.BaseException;
 import siwei.ahon.qualitySafetyInspection.expection.PageData;
@@ -20,7 +21,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.util.ObjectUtils.isEmpty;
-//import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
+import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
 
 @Service
 public class RectifyServiceImpl implements RectifyService {
@@ -40,10 +41,11 @@ public class RectifyServiceImpl implements RectifyService {
     public Integer addRectify(Rectify rectify) {
         Problem problem = problemMapper.selectById(rectify.getProblemId());
         if (isEmpty(problem)) throw new BaseException("不存在对应问题");
+        if (problem.getStatus() == 3) throw new BaseException("问题已归档");
         problem.setStatus(2);
         rectify.setStatus(1);
         problemMapper.updateById(problem);
-//        rectify.setNickName(UserLoginInfo(request));
+        if (StringUtils.isEmpty(rectify.getNickName())) rectify.setNickName(UserLoginInfo(request));
         rectifyMapper.insert(rectify);
         return rectify.getId();
     }

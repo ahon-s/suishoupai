@@ -24,7 +24,7 @@ import java.util.Date;
 public class Verify extends BaseModel {
     @TableId(type = IdType.AUTO)
     Integer id;
-    @NotBlank
+    @NotBlank(message = "审阅人不能为空")
     @FilterFiled(type = FilterTypeEnum.EQ)
     String verifier;
     @FilterFiled(type = FilterTypeEnum.EQ)
@@ -36,7 +36,7 @@ public class Verify extends BaseModel {
     @NotNull
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer problemId;
-    @NotBlank
+    @NotBlank(message = "备注不能为空")
     String description;
     @NotNull
     Integer rectify;
