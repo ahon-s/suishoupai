@@ -63,7 +63,12 @@ public class AuthAop {
     private boolean validPermission(Integer problemSectionId){
         String token = request.getHeader("token");
         JSONObject bodyJson = (JSONObject) JSONObject.toJSON(redisUtils.get(token));
-        List<UserInfo> userInfos = JSONObject.parseArray(bodyJson.getJSONObject("data").getJSONArray("section").toJSONString(), UserInfo.class);
+        List<UserInfo> userInfos = null;
+        try{
+            userInfos = JSONObject.parseArray(bodyJson.getJSONObject("data").getJSONArray("section").toJSONString(), UserInfo.class);
+        }catch (NullPointerException nullPointerException){
+            throw new BaseException("token无对应权限");
+        }
         System.out.println("userInfo:"+userInfos);
         AtomicReference<Boolean> aBoolean = new AtomicReference<>(new Boolean(false));
         userInfos.stream().forEach(e->{

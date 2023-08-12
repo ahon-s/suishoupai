@@ -54,7 +54,12 @@ public class AuthInterceptor implements HandlerInterceptor {
         JSONObject bodyJson = JSONObject.parseObject(body);
         System.out.println(bodyJson);
         String status = bodyJson.getString("status");
+        String data = bodyJson.getString("data");
+//        System.out.println(bodyJson.getString("sda"));
         if (!status.equals("0")){
+            throw new BaseException("用户token失效");
+        }
+        if (isEmpty(data)){
             throw new BaseException("用户token失效");
         }
 //        String tokenTimeOut = bodyJson.getJSONObject("data").getString("tokenTimeOut");

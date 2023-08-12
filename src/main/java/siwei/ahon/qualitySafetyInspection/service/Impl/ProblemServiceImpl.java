@@ -1,18 +1,14 @@
 package siwei.ahon.qualitySafetyInspection.service.Impl;
 
-import cn.hutool.core.date.DateTime;
-import cn.hutool.http.HttpRequest;
-import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Service;
 import siwei.ahon.qualitySafetyInspection.annotation.FilterFiledHelper;
 import siwei.ahon.qualitySafetyInspection.dto.TokenSections;
-import siwei.ahon.qualitySafetyInspection.dto.UserInfo;
-import siwei.ahon.qualitySafetyInspection.expection.BaseException;
+
 import siwei.ahon.qualitySafetyInspection.expection.PageData;
 import siwei.ahon.qualitySafetyInspection.mapper.ProblemMapper;
 import siwei.ahon.qualitySafetyInspection.mapper.ProblemStatusMapper;
@@ -34,7 +30,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.springframework.util.StringUtils.isEmpty;
-//import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
+import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.UserLoginInfo;
 import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.getLoginSections;
 
 @Service
@@ -61,7 +57,7 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public Integer addProblem(Problem problem) {
         problem.setStatus(problem.getRectify() == 1 ? 3 : 1);
-//        problem.setNickName(UserLoginInfo(request));
+        if (isEmpty(problem.getNickName())) problem.setNickName(UserLoginInfo(request));
         problemMapper.insert(problem);
         return problem.getId();
     }
