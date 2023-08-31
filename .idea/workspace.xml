@@ -6,25 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="1647d721-91b9-481c-9b87-fb3baea1f409" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/aop/AuthAop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/aop/AuthAop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/interceptor/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/interceptor/AuthInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/model/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/model/Problem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/model/Rectify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/model/Rectify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/model/Verify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/model/Verify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/pojo/PageFilterPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/pojo/PageFilterPojo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/Impl/ProblemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/Impl/ProblemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/Impl/RectifyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/Impl/RectifyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/Impl/VerifyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/Impl/VerifyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/ProblemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/service/ProblemService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/util/UserConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/siwei/ahon/qualitySafetyInspection/util/UserConfigUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/aop/AuthAop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/aop/AuthAop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/interceptor/AuthInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/interceptor/AuthInterceptor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/model/Problem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/model/Problem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/ProblemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/ProblemServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/RectifyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/RectifyServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/VerifyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/VerifyServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/pojo/PageFilterPojo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/pojo/PageFilterPojo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/ProblemServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/RectifyServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/Impl/VerifyServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/ProblemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/service/ProblemService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/util/UserConfigUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/siwei/ahon/qualitySafetyInspection/util/UserConfigUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/suishoupai-2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/xiamen-qualitySafetyInspection-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/suishoupai-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/xiamen-1.0_new.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/xiamen-1.0_old.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/xiamen-qualitySafetyInspection-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/xiamen-qualitySafetyInspection-1.0-SNAPSHOT.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +186,14 @@
       <workItem from="1691195724556" duration="3282000" />
       <workItem from="1691369581577" duration="1803000" />
       <workItem from="1691631491380" duration="5222000" />
-      <workItem from="1691804524364" duration="3240000" />
+      <workItem from="1691804524364" duration="9134000" />
+      <workItem from="1692259327468" duration="1205000" />
+      <workItem from="1692318808334" duration="4833000" />
+      <workItem from="1692405500591" duration="1755000" />
+      <workItem from="1692842613647" duration="5882000" />
+      <workItem from="1693201830436" duration="2771000" />
+      <workItem from="1693357463584" duration="19255000" />
+      <workItem from="1693440910421" duration="3012000" />
     </task>
     <servers />
   </component>

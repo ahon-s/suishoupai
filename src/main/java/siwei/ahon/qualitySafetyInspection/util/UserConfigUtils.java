@@ -30,9 +30,13 @@ public class UserConfigUtils {
         UserConfigUtils.isLoginAddress = isLoginAddress;
     }
 
+    public static HashMap<String, String> map = new HashMap<>();
+
+
     public static String UserLoginInfo(HttpServletRequest request){
         String token = request.getHeader("token");
-        HashMap<String, String> map = new HashMap<>();
+        if (redisUtils.hasKey("nickName-"+token))
+        return (String) redisUtils.get("nickName-"+token);
         map.put("token",token);
         map.put("Content-Type","application/x-www-form-urlencoded");
         HttpRequest httpRequest = HttpRequest.get(isLoginAddress).addHeaders(map);
@@ -40,6 +44,8 @@ public class UserConfigUtils {
         JSONObject bodyJson = JSONObject.parseObject(body);
         if (bodyJson.getString("code").equals("0")&&!isEmpty(bodyJson.getString("data"))){
             String nickName = bodyJson.getJSONObject("data").getString("nickName");
+            redisUtils.set("nickName-"+token,nickName);
+            redisUtils.expire("sections-"+token,60*10);
             return nickName;
         }
         return null;
@@ -47,7 +53,6 @@ public class UserConfigUtils {
     public static void getLoginSections(HttpServletRequest request){
         String token = request.getHeader("token");
         if (redisUtils.hasKey("sections-"+token)) return;
-        HashMap<String, String> map = new HashMap<>();
         map.put("token",token);
         map.put("Content-Type","application/x-www-form-urlencoded");
         HttpRequest httpRequest = HttpRequest.get(isLoginAddress).addHeaders(map);
@@ -55,7 +60,6 @@ public class UserConfigUtils {
         JSONObject bodyJson = JSONObject.parseObject(body);
         if (bodyJson.getString("code").equals("0")&&!isEmpty(bodyJson.getString("data"))){
             List<TokenSections> tokenSectionsList = JSONObject.parseArray(bodyJson.getJSONObject("data").getJSONArray("secetions").toJSONString(),TokenSections.class);
-            System.out.println(tokenSectionsList);
             if (isEmpty(tokenSectionsList)) throw new BaseException("没有任何标段权限");
             redisUtils.set("sections-"+token,tokenSectionsList);
             redisUtils.expire("sections-"+token,60*10);
