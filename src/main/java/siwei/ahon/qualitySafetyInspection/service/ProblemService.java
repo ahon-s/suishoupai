@@ -12,11 +12,15 @@ import java.util.List;
 
 public interface ProblemService {
     Integer addProblem(Problem problem);
+
     PageData<Problem> getProblemList(Problem problem, PageFilterPojo pf);
+
     List<ProblemStatus> getProblemStatus();
+
     List<ProblemType> getProblemType();
 
     List<ProblemStatistics> getProblemStatistics(Integer sectionId,  PageFilterPojo pf);
 
-
+//    //撤销问题
+//    void revokeProblem(Problem problem);
 }

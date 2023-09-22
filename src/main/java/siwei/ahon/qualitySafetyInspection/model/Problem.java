@@ -47,7 +47,9 @@ public class Problem extends BaseModel {
     Integer rectify;
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer status;
-
+//    @NotNull(message = "检查类型不能为空")
+//    @FilterFiled
+//    Integer checkType;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @TableField(fill = FieldFill.INSERT)

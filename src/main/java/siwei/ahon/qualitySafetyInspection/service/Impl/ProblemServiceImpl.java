@@ -1,6 +1,8 @@
 package siwei.ahon.qualitySafetyInspection.service.Impl;
 
 
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -9,13 +11,16 @@ import org.springframework.stereotype.Service;
 import siwei.ahon.qualitySafetyInspection.annotation.FilterFiledHelper;
 import siwei.ahon.qualitySafetyInspection.dto.TokenSections;
 
+import siwei.ahon.qualitySafetyInspection.expection.BaseException;
 import siwei.ahon.qualitySafetyInspection.expection.PageData;
 import siwei.ahon.qualitySafetyInspection.mapper.ProblemMapper;
 import siwei.ahon.qualitySafetyInspection.mapper.ProblemStatusMapper;
 import siwei.ahon.qualitySafetyInspection.mapper.ProblemTypeMapper;
+import siwei.ahon.qualitySafetyInspection.mapper.VerifyMapper;
 import siwei.ahon.qualitySafetyInspection.model.Problem;
 import siwei.ahon.qualitySafetyInspection.model.ProblemStatus;
 import siwei.ahon.qualitySafetyInspection.model.ProblemType;
+import siwei.ahon.qualitySafetyInspection.model.Verify;
 import siwei.ahon.qualitySafetyInspection.pojo.PageFilterPojo;
 import siwei.ahon.qualitySafetyInspection.pojo.ProblemStatistics;
 
@@ -50,6 +55,9 @@ public class ProblemServiceImpl implements ProblemService {
 
     @Resource
     private HttpServletRequest request;
+
+    @Resource
+    VerifyMapper verifyMapper;
 
     @Resource
     RedisUtils redisUtils;
@@ -122,6 +130,39 @@ public class ProblemServiceImpl implements ProblemService {
 
         return problemStatisticsList;
     }
+
+//    @Override
+//    public void revokeProblem(Problem problem) {
+//        Problem problem_origin = problemMapper.selectById(problem.getId());
+//        String token = request.getHeader("token");
+//        String nickName = (String) redisUtils.get("nickName-" + token);
+//        if (!isEmpty(problem_origin.getNickName())){
+//            if (!nickName.equals(problem_origin.getNickName()))
+//                throw  new BaseException("不能撤回他人的提交");
+//        }else {
+//            JSONObject bodyObject = (JSONObject) JSONObject.toJSON(redisUtils.get(token));
+//            String userName = bodyObject.getString("userName");
+//            if (!userName.equals(problem_origin.getSubmitter()))
+//                throw  new BaseException("不能撤回他人的提交");
+//        }
+//
+//        QueryWrapper<Verify> queryWrapper = new QueryWrapper();
+//        switch (problem_origin.getStatus()){
+//            case 1 :
+//                queryWrapper.eq("problem_id",problem.getId());
+//                Verify verify = verifyMapper.selectOne(queryWrapper);
+//                if(isEmpty(verify)) problemMapper.delete(new LambdaQueryWrapper<Problem>().eq(Problem::getId,problem.getId()));
+//                else throw new BaseException("请撤销审阅");
+//                break;
+//            case 2:
+//                throw new BaseException("问题已整改,需先撤销整改");
+//                break;
+//            case 3:
+//                throw new BaseException("问题已归档，无法撤销");
+//                break;
+//            default:
+//        }
+//    }
 
     private  void timeFilter(QueryWrapper qw, PageFilterPojo pf){
         qw.gt("gmt_create",pf.getsTime());

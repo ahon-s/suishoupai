@@ -5,7 +5,8 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class PageFilterPojo {
+public class
+PageFilterPojo {
     String sTime="2000-01-01";
     String eTime="2099-01-01";
     Integer pageNum=1;
