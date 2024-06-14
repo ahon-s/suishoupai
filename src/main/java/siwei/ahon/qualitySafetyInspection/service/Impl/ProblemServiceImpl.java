@@ -1,8 +1,6 @@
 package siwei.ahon.qualitySafetyInspection.service.Impl;
 
 
-import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Service;
 import siwei.ahon.qualitySafetyInspection.annotation.FilterFiledHelper;
 import siwei.ahon.qualitySafetyInspection.dto.TokenSections;
 
-import siwei.ahon.qualitySafetyInspection.expection.BaseException;
 import siwei.ahon.qualitySafetyInspection.expection.PageData;
 import siwei.ahon.qualitySafetyInspection.mapper.ProblemMapper;
 import siwei.ahon.qualitySafetyInspection.mapper.ProblemStatusMapper;
@@ -20,7 +17,6 @@ import siwei.ahon.qualitySafetyInspection.mapper.VerifyMapper;
 import siwei.ahon.qualitySafetyInspection.model.Problem;
 import siwei.ahon.qualitySafetyInspection.model.ProblemStatus;
 import siwei.ahon.qualitySafetyInspection.model.ProblemType;
-import siwei.ahon.qualitySafetyInspection.model.Verify;
 import siwei.ahon.qualitySafetyInspection.pojo.PageFilterPojo;
 import siwei.ahon.qualitySafetyInspection.pojo.ProblemStatistics;
 
@@ -30,7 +26,6 @@ import siwei.ahon.qualitySafetyInspection.util.RedisUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -71,10 +66,36 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Override
+    public PageData<Problem> getProblemList2(Problem problem, String statusList, PageFilterPojo pf) {
+
+        QueryWrapper<Problem> problemQueryWrapper = new QueryWrapper<>();
+        QueryWrapper<Problem> queryWrapper = filedHelper.getQueryWrapper(problemQueryWrapper,problem);
+        timeFilter(queryWrapper,pf);
+        queryWrapper.orderByDesc("gmt_create");
+        Page<Problem> problemPage = new Page<>(pf.getPageNum(), pf.getPageSize());
+        if (!isEmpty(statusList)){
+
+            String[] status = statusList.split(",");
+
+                queryWrapper.and(wrapper -> {
+                            for (int i = 0; i < status.length; i++) {
+                                int finalI = i;
+                                wrapper.eq("status",Integer.valueOf(status[finalI])).or();
+                            }
+                    });
+
+
+        }
+        IPage page = problemMapper.selectPage(problemPage,queryWrapper);
+        PageData<Problem> problemPageData = new PageData<>(page);
+        return problemPageData;
+    }
+    @Override
     public PageData<Problem> getProblemList(Problem problem, PageFilterPojo pf) {
         QueryWrapper<Problem> problemQueryWrapper = new QueryWrapper<>();
         QueryWrapper queryWrapper = filedHelper.getQueryWrapper(problemQueryWrapper,problem);
         timeFilter(queryWrapper,pf);
+        queryWrapper.orderByDesc("gmt_create");
         Page<Problem> problemPage = new Page<>(pf.getPageNum(), pf.getPageSize());
         IPage page = problemMapper.selectPage(problemPage,queryWrapper);
         PageData<Problem> problemPageData = new PageData<>(page);

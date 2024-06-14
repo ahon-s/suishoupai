@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="xiamen-qualitySafetyInspection" />
+        <module name="my-suishoupai-project" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="my-suishoupai-project" options="-parameters" />
       <module name="xiamen-qualitySafetyInspection" options="-parameters" />
     </option>
   </component>

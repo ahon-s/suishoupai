@@ -64,7 +64,7 @@ public class AuthAop {
         }catch (NullPointerException nullPointerException){
             throw new BaseException("token无对应权限");
         }
-        System.out.println("userInfo:"+tokenSectionsList);
+//        System.out.println("userInfo:"+tokenSectionsList);
         AtomicReference<Boolean> aBoolean = new AtomicReference<>(new Boolean(false));
         tokenSectionsList.stream().forEach(e->{
             if (e.getAccount_BDID().equals(problemSectionId)) aBoolean.set(true);

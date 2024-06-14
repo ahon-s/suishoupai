@@ -55,6 +55,7 @@ public class RectifyServiceImpl implements RectifyService {
         QueryWrapper<Rectify> rectifyQueryWrapper = new QueryWrapper<>();
         QueryWrapper queryWrapper = filedHelper.getQueryWrapper(rectifyQueryWrapper, rectify);
         timeFilter(queryWrapper,pf);
+        queryWrapper.orderByDesc("gmt_create");
         Page<Rectify> rectifyPage = new Page<>(pf.getPageNum(), pf.getPageSize());
         IPage page = rectifyMapper.selectPage(rectifyPage, queryWrapper);
         PageData<Rectify> pd = new PageData<>(page);

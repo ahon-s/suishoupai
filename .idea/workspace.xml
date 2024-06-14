@@ -63,6 +63,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
   <component name="ProjectId" id="2QuSTNAfq8jsDK9pjRE42apzDr3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -79,7 +82,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../imgreporterservice-jbz" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../reporter" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -100,10 +103,17 @@
       <recent name="siwei.ahon.qualitySafetyInspection.aop" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.QualitySafetyInspectionApplication">
+  <component name="RunManager" selected="Spring Boot.QualitySafetyInspectionApplication (1)">
     <configuration name="QualitySafetyInspectionApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="siwei.ahon.qualitySafetyInspection.QualitySafetyInspectionApplication" />
       <module name="xiamen-qualitySafetyInspection" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QualitySafetyInspectionApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="my-suishoupai-project" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="siwei.ahon.qualitySafetyInspection.QualitySafetyInspectionApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -194,6 +204,16 @@
       <workItem from="1693201830436" duration="2771000" />
       <workItem from="1693357463584" duration="19255000" />
       <workItem from="1693440910421" duration="3012000" />
+      <workItem from="1714292804737" duration="1047000" />
+      <workItem from="1715825208870" duration="10222000" />
+      <workItem from="1716358400720" duration="3798000" />
+      <workItem from="1716423736130" duration="3800000" />
+      <workItem from="1716510071672" duration="1161000" />
+      <workItem from="1716768960246" duration="571000" />
+      <workItem from="1717052287936" duration="391000" />
+      <workItem from="1718161918870" duration="597000" />
+      <workItem from="1718237341304" duration="562000" />
+      <workItem from="1718324284863" duration="4576000" />
     </task>
     <servers />
   </component>

@@ -46,6 +46,11 @@ public class InspectionController {
         PageData<Problem> problemList = problemService.getProblemList(problem, pf);
         return MyResult.success(problemList);
     }
+    @GetMapping("getProblemList2")
+    public MyResult getProblemList2(Problem problem,String statusList, PageFilterPojo pf){
+        PageData<Problem> problemList = problemService.getProblemList2(problem,statusList, pf);
+        return MyResult.success(problemList);
+    }
 
     /**获取问题类型*/
     @GetMapping("getProblemType")

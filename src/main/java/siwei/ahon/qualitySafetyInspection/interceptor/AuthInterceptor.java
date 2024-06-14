@@ -52,7 +52,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         HttpRequest authRequest = HttpRequest.post(authAddress).body(requestJson.toJSONString());
         String body = authRequest.execute().body();
         JSONObject bodyJson = JSONObject.parseObject(body);
-        System.out.println(bodyJson);
+//        System.out.println(bodyJson);
         String status = bodyJson.getString("status");
         String data = bodyJson.getString("data");
 //        System.out.println(bodyJson.getString("sda"));

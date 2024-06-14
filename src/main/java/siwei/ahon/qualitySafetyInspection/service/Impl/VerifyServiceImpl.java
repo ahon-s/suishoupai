@@ -70,6 +70,7 @@ public class VerifyServiceImpl implements VerifyService {
         QueryWrapper<Verify> verifyQueryWrapper = new QueryWrapper<>();
         QueryWrapper queryWrapper = filedHelper.getQueryWrapper(verifyQueryWrapper, verify);
         timeFilter(queryWrapper,pf);
+        queryWrapper.orderByDesc("gmt_create");
         Page<Verify> verifyPage = new Page<>(pf.getPageNum(),  pf.getPageSize());
         IPage page = verifyMapper.selectPage(verifyPage, queryWrapper);
         PageData<Verify> pd = new PageData<Verify>(page);

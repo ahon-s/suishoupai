@@ -21,6 +21,7 @@ import java.util.Date;
 @TableName("problem")
 public class Problem extends BaseModel {
     @TableId(type = IdType.AUTO)
+    @FilterFiled(type = FilterTypeEnum.EQ)
     Integer id;
     @FilterFiled(type = FilterTypeEnum.EQ)
     @NotBlank(message = "提交人不能为空")
@@ -45,7 +46,7 @@ public class Problem extends BaseModel {
     Integer sectionId;
     @NotNull(message = "类型不能为空")
     Integer rectify;
-    @FilterFiled(type = FilterTypeEnum.EQ)
+    @FilterFiled(type = FilterTypeEnum.LIKE)
     Integer status;
 //    @NotNull(message = "检查类型不能为空")
 //    @FilterFiled
