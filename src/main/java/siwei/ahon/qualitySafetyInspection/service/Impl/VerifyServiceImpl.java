@@ -61,6 +61,7 @@ public class VerifyServiceImpl implements VerifyService {
         problemMapper.updateById(problem);
         rectifyMapper.updateById(rectify);
         if (isEmpty(verify.getNickName())) verify.setNickName(UserLoginInfo(request));
+        verify.setStatus(1);
         verifyMapper.insert(verify);
         return verify.getId();
     }

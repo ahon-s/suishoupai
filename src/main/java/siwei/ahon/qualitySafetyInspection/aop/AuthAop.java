@@ -22,7 +22,7 @@ import static org.springframework.util.StringUtils.isEmpty;
 import static siwei.ahon.qualitySafetyInspection.util.UserConfigUtils.getLoginSections;
 
 @Component
-@Aspect
+//@Aspect
 public class AuthAop {
     @Resource
     private HttpServletRequest request;

@@ -1,11 +1,13 @@
 package siwei.ahon.qualitySafetyInspection.model;
 
+import cn.hutool.core.date.DateTime;
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.format.annotation.DateTimeFormat;
 import siwei.ahon.qualitySafetyInspection.annotation.FilterFiled;
 import siwei.ahon.qualitySafetyInspection.annotation.FilterTypeEnum;
@@ -20,37 +22,83 @@ import java.util.Date;
 @NoArgsConstructor
 @TableName("problem")
 public class Problem extends BaseModel {
+
     @TableId(type = IdType.AUTO)
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer id;
-    @FilterFiled(type = FilterTypeEnum.EQ)
-    @NotBlank(message = "提交人不能为空")
-    String submitter;
-    @FilterFiled(type = FilterTypeEnum.EQ)
-    String nickName;
 
-    String submitterSection;
-    @NotBlank(message = "备注不能为空")
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    @NotBlank(message = "姓名不能为空")
+    String submitter;
+
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    @NotBlank(message = "提交人Id不能为空")
+    String submitterId;
+
+    @NotNull(message = "手机号不能为空")
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    String phoneNumber;
+
+    @NotBlank(message = "问题描述不能为空")
     String description;
-    @NotNull(message = "经纬度不能为空")
+
+    @NotNull(message = "A坐标不能为空")
+    Double A;
+    @NotNull(message = "B坐标不能为空")
+    Double B;
+
+    @NotNull(message = "纬度不能为空")
     Double lat;
-    @NotNull(message = "经纬度不能为空")
+    @NotNull(message = "经度不能为空")
     Double lng;
+
+    @NotBlank(message = "发现位置不能为空")
+    String location;
+
     @NotBlank
     String pictureUrl;
-    @NotNull(message = "类型不能为空")
+
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer type;
-    @NotNull
+
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer sectionId;
-    @NotNull(message = "类型不能为空")
+
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    Integer sectionName;
+    @NotNull(message = "是否需要修改不能为空")
     Integer rectify;
+
     @FilterFiled(type = FilterTypeEnum.LIKE)
     Integer status;
-//    @NotNull(message = "检查类型不能为空")
-//    @FilterFiled
-//    Integer checkType;
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    String rectifyDepartment;
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    String verifyDepartment;
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    String rectifyDepartmentId;
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    String verifyDepartmentId;
+
+    //分配状态
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    Integer AssignStatus;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @NotNull(message = "整改时间不能为空")
+    Date rectifyTime;
+
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    String supervisor;
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    String supervisorId;
+
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    String buildName;
+
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    String buildId;
+
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @TableField(fill = FieldFill.INSERT)

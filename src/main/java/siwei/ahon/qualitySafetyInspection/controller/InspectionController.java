@@ -8,9 +8,7 @@ import siwei.ahon.qualitySafetyInspection.expection.PageData;
 import siwei.ahon.qualitySafetyInspection.model.*;
 import siwei.ahon.qualitySafetyInspection.pojo.PageFilterPojo;
 import siwei.ahon.qualitySafetyInspection.pojo.ProblemStatistics;
-import siwei.ahon.qualitySafetyInspection.service.ProblemService;
-import siwei.ahon.qualitySafetyInspection.service.RectifyService;
-import siwei.ahon.qualitySafetyInspection.service.VerifyService;
+import siwei.ahon.qualitySafetyInspection.service.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -32,14 +30,32 @@ public class InspectionController {
     @Resource
     VerifyService verifyService;
 
+
+    @Resource
+    AcceptProblemService acceptProblemService;
+
+    @Resource
+    ConfirmProblemService confirmProblemService;
+
+    @Resource
+    ConfirmVerifyService confirmVerifyService;
+
+
+    @Resource
+    ConcludeService concludeService;
+
     @Resource
     private HttpServletRequest request;
+
+
     /**问题模块*/
     @PostMapping("addProblem")
     public MyResult addProblem(@Valid Problem problem){
         Integer result = problemService.addProblem(problem);
         return MyResult.success(result);
     }
+
+
     /**获取问题记录*/
     @GetMapping("getProblemList")
     public MyResult getProblemList(Problem problem, PageFilterPojo pf){
@@ -95,6 +111,76 @@ public class InspectionController {
     public  MyResult getVerifyList(Verify verify,PageFilterPojo pf){
         PageData verifyList = verifyService.getVerifyList(verify, pf);
         return MyResult.success(verifyList);
+    }
+
+    /*****新模块*****/
+
+    /**问题模块*/
+    @PostMapping("addProblemDailyInspection")
+    public MyResult addProblemDailyInspection(@Valid Problem problem){
+        Integer result = problemService.addProblemDailyInspection(problem);
+        return MyResult.success(result);
+    }
+
+    /**问题模块*/
+    @PostMapping("addProblemFreePhoto")
+    public MyResult addProblemFreePhoto(@Valid Problem problem){
+        Integer result = problemService.addProblemFreePhoto(problem);
+        return MyResult.success(result);
+    }
+
+
+    /*****随手怕流程*****/
+    /**安质部受理*/
+    @PostMapping("addAcceptProblem")
+    public MyResult addAcceptProblem(@Valid AcceptProblem acceptProblem){
+        Integer result = acceptProblemService.addAcceptProblem(acceptProblem);
+        return MyResult.success(result);
+    }
+
+    @GetMapping("getAcceptProblemList")
+    public MyResult getAcceptProblemList(AcceptProblem acceptProblem,PageFilterPojo pf){
+        PageData<AcceptProblem> result = acceptProblemService.getAcceptProblemList(acceptProblem, pf);
+        return MyResult.success(result);
+    }
+
+    /**工程部确认**/
+    @PostMapping("ConfirmProblem")
+    public MyResult addConfirmProblem(@Valid ConfirmProblem confirmProblem){
+        Integer result = confirmProblemService.addConfirmProblem(confirmProblem);
+        return MyResult.success(result);
+    }
+
+    @GetMapping("getConfirmProblemList")
+    public MyResult getConfirmProblemList(ConfirmProblem confirmProblem,PageFilterPojo pf){
+        PageData<ConfirmProblem> result = confirmProblemService.getConfirmProblemList(confirmProblem, pf);
+        return MyResult.success(result);
+    }
+
+    /**工程部确认审核**/
+    @PostMapping("addConfirmVerify")
+    public MyResult addConfirmVerify(@Valid ConfirmVerify confirmVerify){
+        Integer result = confirmVerifyService.addConfirmVerify(confirmVerify);
+        return MyResult.success(result);
+    }
+
+    @GetMapping("getConfirmVerifyList")
+    public MyResult getConfirmVerifyList(ConfirmVerify confirmVerify,PageFilterPojo pf){
+        PageData<ConfirmVerify> result = confirmVerifyService.getConfirmVerifyList(confirmVerify, pf);
+        return MyResult.success(result);
+    }
+
+    /**安质部审核结办**/
+    @PostMapping("addConclude")
+    public MyResult addConclude(@Valid Conclude conclude){
+        Integer result = concludeService.addConclude(conclude);
+        return MyResult.success(result);
+    }
+
+    @GetMapping("getConcludeList")
+    public MyResult getConcludeList(Conclude conclude,PageFilterPojo pf){
+        PageData<Conclude> result = concludeService.getConcludeList(conclude, pf);
+        return MyResult.success(result);
     }
 
 

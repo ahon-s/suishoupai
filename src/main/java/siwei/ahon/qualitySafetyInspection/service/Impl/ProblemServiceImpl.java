@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import siwei.ahon.qualitySafetyInspection.annotation.FilterFiledHelper;
 import siwei.ahon.qualitySafetyInspection.dto.TokenSections;
 
+import siwei.ahon.qualitySafetyInspection.expection.BaseException;
 import siwei.ahon.qualitySafetyInspection.expection.PageData;
 import siwei.ahon.qualitySafetyInspection.mapper.ProblemMapper;
 import siwei.ahon.qualitySafetyInspection.mapper.ProblemStatusMapper;
@@ -59,11 +60,36 @@ public class ProblemServiceImpl implements ProblemService {
 
     @Override
     public Integer addProblem(Problem problem) {
+        return null;
+    }
+
+    @Override
+    public Integer addProblemDailyInspection(Problem problem) {
         problem.setStatus(problem.getRectify() == 1 ? 3 : 1);
-        if (isEmpty(problem.getNickName())) problem.setNickName(UserLoginInfo(request));
+        if (isEmpty(problem.getRectifyDepartment()))
+            throw new BaseException("整改部门不能为空");
+        if (isEmpty(problem.getRectifyDepartmentId()))
+            throw new BaseException("整改部门id不能为空");
+        if (isEmpty(problem.getVerifyDepartment()))
+            throw new BaseException("审核部门不能为空");
+        if (isEmpty(problem.getRectifyDepartmentId()))
+            throw new BaseException("审核部门id不能为空");
+        problem.setStatus(1);
+        problem.setType(1);
+        problem.setAssignStatus(3);
         problemMapper.insert(problem);
         return problem.getId();
     }
+
+    @Override
+    public Integer addProblemFreePhoto(Problem problem) {
+        problem.setStatus(99);
+        problem.setType(2);
+        problem.setAssignStatus(1);
+        problemMapper.insert(problem);
+        return problem.getId();
+    }
+
 
     @Override
     public PageData<Problem> getProblemList2(Problem problem, String statusList, PageFilterPojo pf) {
@@ -83,7 +109,6 @@ public class ProblemServiceImpl implements ProblemService {
                                 wrapper.eq("status",Integer.valueOf(status[finalI])).or();
                             }
                     });
-
 
         }
         IPage page = problemMapper.selectPage(problemPage,queryWrapper);

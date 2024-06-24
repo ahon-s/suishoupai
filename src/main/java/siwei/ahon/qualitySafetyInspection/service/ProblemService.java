@@ -13,6 +13,11 @@ import java.util.List;
 public interface ProblemService {
     Integer addProblem(Problem problem);
 
+    Integer addProblemDailyInspection(Problem problem);
+
+
+    Integer addProblemFreePhoto(Problem problem);
+
     PageData<Problem> getProblemList2(Problem problem, String statusList, PageFilterPojo pf);
 
     PageData<Problem> getProblemList(Problem problem, PageFilterPojo pf);
