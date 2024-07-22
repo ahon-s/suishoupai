@@ -82,7 +82,7 @@ public class InspectionController {
     }
     /**获取问题统计信息*/
     @GetMapping("getProblemStatistics")
-    public MyResult getProblemStatistics(Integer sectionId, PageFilterPojo pf){
+    public MyResult getProblemStatistics(String sectionId, PageFilterPojo pf){
         List<ProblemStatistics> problemStatistics = problemService.getProblemStatistics(sectionId, pf);
         return MyResult.success(problemStatistics);
     }
@@ -115,17 +115,24 @@ public class InspectionController {
 
     /*****新模块*****/
 
-    /**问题模块*/
+    /**日常检查类型 问题模块*/
     @PostMapping("addProblemDailyInspection")
     public MyResult addProblemDailyInspection(@Valid Problem problem){
         Integer result = problemService.addProblemDailyInspection(problem);
         return MyResult.success(result);
     }
 
-    /**问题模块*/
+    /**随手拍类型 问题模块*/
     @PostMapping("addProblemFreePhoto")
     public MyResult addProblemFreePhoto(@Valid Problem problem){
         Integer result = problemService.addProblemFreePhoto(problem);
+        return MyResult.success(result);
+    }
+
+    /**日常巡检 问题模块*/
+    @PostMapping("addProblemDailyCheck")
+    public MyResult addProblemDailyCheck(@Valid Problem problem){
+        Integer result = problemService.addProblemDailyCheck(problem);
         return MyResult.success(result);
     }
 
@@ -145,7 +152,7 @@ public class InspectionController {
     }
 
     /**工程部确认**/
-    @PostMapping("ConfirmProblem")
+    @PostMapping("addConfirmProblem")
     public MyResult addConfirmProblem(@Valid ConfirmProblem confirmProblem){
         Integer result = confirmProblemService.addConfirmProblem(confirmProblem);
         return MyResult.success(result);
@@ -181,6 +188,12 @@ public class InspectionController {
     public MyResult getConcludeList(Conclude conclude,PageFilterPojo pf){
         PageData<Conclude> result = concludeService.getConcludeList(conclude, pf);
         return MyResult.success(result);
+    }
+
+    @GetMapping("getExcelFile")
+    public void getExcelFile(Problem problem,PageFilterPojo pf){
+        problemService.getExcelFile(problem, pf);
+
     }
 
 

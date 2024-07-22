@@ -27,8 +27,7 @@ public class Verify extends BaseModel {
     @NotBlank(message = "审阅人不能为空")
     @FilterFiled(type = FilterTypeEnum.EQ)
     String verifier;
-    @FilterFiled(type = FilterTypeEnum.EQ)
-    String nickName;
+
 
     String verifierSection;
     @NotNull
@@ -40,6 +39,8 @@ public class Verify extends BaseModel {
     String description;
     @NotNull
     Integer rectify;
+//    @FilterFiled(type = FilterTypeEnum.EQ)
+//    @TableField(value = "`status`")
     Integer status;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @TableField(fill = FieldFill.INSERT)

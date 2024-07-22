@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProblemStatistics {
-    Integer sectionId;
+    String sectionId;
     Integer totalCount;
     Integer qualityCount;
     Integer secureCount;

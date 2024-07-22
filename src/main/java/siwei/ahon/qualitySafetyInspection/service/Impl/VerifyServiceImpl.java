@@ -53,14 +53,17 @@ public class VerifyServiceImpl implements VerifyService {
         List<Verify> preVerify = verifyMapper.selectList(new LambdaQueryWrapper<Verify>().eq(Verify::getRectifyId, verify.getRectifyId()));
         if (isEmpty(problem)) throw new BaseException("不存在对应问题");
         if (isEmpty(rectify)) throw new BaseException("不存在对应整改记录");
-        if (rectify.getProblemId() != problem.getId()) throw new BaseException("问题与整改记录不匹配");
+        if (!rectify.getProblemId().equals(problem.getId())) throw new BaseException("问题与整改记录不匹配");
         if (problem.getStatus() == 3) throw new BaseException("问题已归档");
         if (!isEmpty(preVerify)) throw new BaseException("已审阅此整改记录");
-        problem.setStatus(verify.getRectify() == 1 ? 3 : 1);
+        if (problem.getType()==1)
+            problem.setStatus(verify.getRectify() == 1 ? 3 : 1);
+        if (problem.getType()==2)
+            problem.setStatus(verify.getRectify() == 1 ? 4 : 1);
         rectify.setStatus(verify.getRectify() == 1 ? 2 : 3);
         problemMapper.updateById(problem);
         rectifyMapper.updateById(rectify);
-        if (isEmpty(verify.getNickName())) verify.setNickName(UserLoginInfo(request));
+//        if (isEmpty(verify.getNickName())) verify.setNickName(UserLoginInfo(request));
         verify.setStatus(1);
         verifyMapper.insert(verify);
         return verify.getId();

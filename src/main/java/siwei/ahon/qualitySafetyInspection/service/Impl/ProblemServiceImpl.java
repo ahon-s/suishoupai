@@ -1,11 +1,17 @@
 package siwei.ahon.qualitySafetyInspection.service.Impl;
 
 
+import cn.hutool.http.HttpRequest;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
+import java.net.URLEncoder;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import siwei.ahon.qualitySafetyInspection.annotation.FilterFiledHelper;
 import siwei.ahon.qualitySafetyInspection.dto.TokenSections;
 
@@ -22,12 +28,19 @@ import siwei.ahon.qualitySafetyInspection.pojo.PageFilterPojo;
 import siwei.ahon.qualitySafetyInspection.pojo.ProblemStatistics;
 
 import siwei.ahon.qualitySafetyInspection.service.ProblemService;
+import siwei.ahon.qualitySafetyInspection.util.ExcelUtil;
 import siwei.ahon.qualitySafetyInspection.util.RedisUtils;
 
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import static org.springframework.util.StringUtils.isEmpty;
@@ -58,29 +71,32 @@ public class ProblemServiceImpl implements ProblemService {
     @Resource
     RedisUtils redisUtils;
 
+    @Resource
+    private HttpServletResponse response;
+
     @Override
     public Integer addProblem(Problem problem) {
         return null;
     }
 
+    //日常检查
     @Override
     public Integer addProblemDailyInspection(Problem problem) {
         problem.setStatus(problem.getRectify() == 1 ? 3 : 1);
-        if (isEmpty(problem.getRectifyDepartment()))
-            throw new BaseException("整改部门不能为空");
-        if (isEmpty(problem.getRectifyDepartmentId()))
-            throw new BaseException("整改部门id不能为空");
-        if (isEmpty(problem.getVerifyDepartment()))
-            throw new BaseException("审核部门不能为空");
-        if (isEmpty(problem.getRectifyDepartmentId()))
-            throw new BaseException("审核部门id不能为空");
         problem.setStatus(1);
+        if (isEmpty(problem.getSupervisorId())){
+            problem.setStatus(99);
+            problem.setAssignStatus(2);
+        }
         problem.setType(1);
         problem.setAssignStatus(3);
         problemMapper.insert(problem);
+
         return problem.getId();
     }
 
+
+    //随手拍
     @Override
     public Integer addProblemFreePhoto(Problem problem) {
         problem.setStatus(99);
@@ -91,10 +107,23 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
 
+    //日常检查
+    @Override
+    public Integer addProblemDailyCheck(Problem problem) {
+        problem.setType(3);
+        problem.setStatus(3);
+//        problem.setAssignStatus(3);
+        problemMapper.insert(problem);
+        return problem.getId();
+    }
+
+
+    //大连不用的接口
     @Override
     public PageData<Problem> getProblemList2(Problem problem, String statusList, PageFilterPojo pf) {
 
         QueryWrapper<Problem> problemQueryWrapper = new QueryWrapper<>();
+        problemQueryWrapper.eq("submitter",problem.getSubmitter());
         QueryWrapper<Problem> queryWrapper = filedHelper.getQueryWrapper(problemQueryWrapper,problem);
         timeFilter(queryWrapper,pf);
         queryWrapper.orderByDesc("gmt_create");
@@ -118,7 +147,10 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public PageData<Problem> getProblemList(Problem problem, PageFilterPojo pf) {
         QueryWrapper<Problem> problemQueryWrapper = new QueryWrapper<>();
+
+
         QueryWrapper queryWrapper = filedHelper.getQueryWrapper(problemQueryWrapper,problem);
+
         timeFilter(queryWrapper,pf);
         queryWrapper.orderByDesc("gmt_create");
         Page<Problem> problemPage = new Page<>(pf.getPageNum(), pf.getPageSize());
@@ -140,7 +172,7 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Override
-    public List<ProblemStatistics> getProblemStatistics(Integer sectionId,PageFilterPojo pf) {
+    public List<ProblemStatistics> getProblemStatistics(String sectionId,PageFilterPojo pf) {
         ArrayList<ProblemStatistics> problemStatisticsList = new ArrayList<>();
 
         QueryWrapper<Problem> problemQueryWrapper = new QueryWrapper<>();
@@ -153,9 +185,9 @@ public class ProblemServiceImpl implements ProblemService {
                 problemQueryWrapper.eq("section_id",e.getAccount_BDID()).or();
             });
             List<Problem> problems = problemMapper.selectList(problemQueryWrapper);
-            Map<Integer, List<Problem>> sectionProblems = problems.stream().collect(Collectors.groupingBy(Problem::getSectionId));
-            Set<Integer> keySet = sectionProblems.keySet();
-            for (Integer key : keySet) {
+            Map<String, List<Problem>> sectionProblems = problems.stream().collect(Collectors.groupingBy(Problem::getSectionId));
+            Set<String> keySet = sectionProblems.keySet();
+            for (String key : keySet) {
                 ProblemStatistics problemStatistics = new ProblemStatistics();
                 problemStatistics.setSectionId(key);
                 problemStatistics.setTotalCount(sectionProblems.get(key).size());
@@ -214,7 +246,100 @@ public class ProblemServiceImpl implements ProblemService {
         qw.gt("gmt_create",pf.getsTime());
         qw.lt("gmt_create",pf.geteTime());
     }
+    @Override
+    public void getExcelFile(Problem problem, PageFilterPojo pf){
 
+        /**
+         * 获取数据
+         * */
+        pf.setPageSize(999999999);
+        PageData<Problem> problemPageList = this.getProblemList(problem, pf);
+        System.out.println(problemPageList);
+        if (problemPageList.getTotalCount()>10000){
+            throw new BaseException("数据量太大，请重新选择时间");
+        }
+        List<Problem> problemList = problemPageList.getDataList();
+        String[] title = {"问题id","提出人","手机号","问题类型","问题标段","问题描述 ","问题照片","是否需要整改","整改部门","审核部门","分发工程单位","监理","处理状态","提出时间"};
+        String fileName = "问题记录";
+        String sheetName = "sheet1";
+        String[][] content = new String[problemList.size()][title.length];
+        final AtomicInteger atomicInteger= new AtomicInteger(0);
+        SimpleDateFormat dateFormat =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        problemList.stream().forEach(e->{
+            int row = atomicInteger.getAndIncrement();
+            content[row][0] = e.getId().toString();
+            content[row][1] = e.getSubmitter();
+            content[row][2] = e.getPhoneNumber();
+            switch (e.getType()){
+                case 1:
+                    content[row][3] = "日常检查";
+                    break;
+                case 2:
+                    content[row][3] = "随手拍";
+                    break;
+                case 3:
+                    content[row][3] = "日常巡检";
+                    break;
+
+            }
+            content[row][4] = e.getSectionName();
+            content[row][5] = e.getDescription();
+            content[row][6] = e.getPictureUrl();
+            if (!isEmpty(e.getRectify()))
+            content[row][7] = e.getRectify() == 1? "否":"是";
+            else content[row][7] = "未受理";
+            content[row][8] = e.getRectifyDepartment();
+            content[row][9] = e.getVerifyDepartment();
+            content[row][10] = e.getBuildName();
+            content[row][11] = e.getSupervisor();
+            switch (e.getStatus()){
+                case 1:
+                    content[row][12] = "待整改";
+                    break;
+                case 2:
+                    content[row][12] = "待审阅";
+                    break;
+                case 3:
+                    content[row][12] = "已归档 ";
+                    break;
+                case 4:
+                    content[row][12] = "待确认";
+                    break;
+                case 5:
+                    content[row][12] = "待结办";
+                    break;
+                case 99:
+                    content[row][12] = "待分配";
+                    break;
+
+            }
+            content[row][13] = dateFormat.format(e.getGmtCreate());
+//            content[row][14] = dateFormat.format(e.getGmtModified());
+        });
+        HSSFWorkbook workbook = ExcelUtil.getHSSFWorkbook(sheetName,title,content,null);
+
+        //设置响应文件
+        response.addHeader("content-type", "application/vnd.ms-excel;charset=UTF-8");
+        // 设置文件名称
+        String fileNameURL = null;
+        try {
+            fileNameURL = URLEncoder.encode(fileName+".xls", "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        response.setHeader("Content-disposition", "attachment;filename="+fileNameURL+";"+"filename*=utf-8''"+fileNameURL);
+        response.addHeader("Cache-Control", "no-cache");
+        //返回文件流
+        try{
+            ServletOutputStream outputStream = response.getOutputStream();
+            workbook.write(outputStream);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 }

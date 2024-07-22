@@ -27,8 +27,6 @@ public class Rectify extends BaseModel {
     @NotBlank(message = "整改人不能为空")
     @FilterFiled(type = FilterTypeEnum.EQ)
     String rectifier;
-    @FilterFiled(type = FilterTypeEnum.EQ)
-    String nickName;
 
     String rectifierSection;
     @NotNull
@@ -38,6 +36,8 @@ public class Rectify extends BaseModel {
     String description;
     @NotBlank(message = "图片不能为空")
     String pictureUrl;
+//    @FilterFiled(type = FilterTypeEnum.EQ)
+//    @TableField(value = "`status`")
     Integer status;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @TableField(fill = FieldFill.INSERT)

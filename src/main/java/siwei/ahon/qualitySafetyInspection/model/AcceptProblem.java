@@ -1,9 +1,6 @@
 package siwei.ahon.qualitySafetyInspection.model;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +16,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName(value = "accept_problem")
 public class AcceptProblem extends BaseModel {
 
     @TableId(type = IdType.AUTO)
@@ -39,29 +37,30 @@ public class AcceptProblem extends BaseModel {
 
     String description;
 
-    //1是 2否
-    @NotNull(message = "受理状态不能为空")
-    @FilterFiled(type = FilterTypeEnum.EQ)
-    int status;
 
 
-    @FilterFiled(type = FilterTypeEnum.EQ)
-    int confirmStatus;
-
-    @NotBlank(message = "工程部名称不能为空")
     @FilterFiled(type = FilterTypeEnum.EQ)
     String  buildName;
 
-    @NotBlank(message = "工程部id不能为空")
+
     @FilterFiled(type = FilterTypeEnum.EQ)
     String  buildId;
 
 
-    @NotBlank(message = "标段不能为空")
+    //1是 2否
+    @NotNull(message = "受理状态不能为空")
+//    @FilterFiled(type = FilterTypeEnum.EQ)
+//    @TableField(value = "`status`")
+    int status;
+
+
+    int confirmStatus;
+
+
     @FilterFiled(type = FilterTypeEnum.EQ)
     String  sectionName;
 
-    @NotBlank(message = "标段id不能为空")
+
     @FilterFiled(type = FilterTypeEnum.EQ)
     String  sectionId;
 

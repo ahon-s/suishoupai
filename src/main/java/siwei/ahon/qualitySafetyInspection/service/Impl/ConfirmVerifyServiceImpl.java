@@ -39,9 +39,14 @@ public class ConfirmVerifyServiceImpl implements ConfirmVerifyService {
 
         LambdaUpdateWrapper<Problem> updateWrapper= new LambdaUpdateWrapper<>();
         updateWrapper.eq(Problem::getId,confirmVerify.getProblemId());
-        updateWrapper.set(Problem::getStatus,4);
+        updateWrapper.set(Problem::getStatus,5);
         problemMapper.update(null,updateWrapper);
 
+
+//        LambdaUpdateWrapper<Verify> updateWrapperT= new LambdaUpdateWrapper<>();
+//        updateWrapperT.eq(Verify::getId,confirmVerify.getVerifyId());
+//        updateWrapperT.set(Verify::getStatus,2);
+//        verifyMapper.update(null,updateWrapperT);
 
         int insert = confirmVerifyMapper.insert(confirmVerify);
         return insert;

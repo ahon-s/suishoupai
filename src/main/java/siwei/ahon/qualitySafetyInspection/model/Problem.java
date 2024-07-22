@@ -42,34 +42,35 @@ public class Problem extends BaseModel {
     @NotBlank(message = "问题描述不能为空")
     String description;
 
-    @NotNull(message = "A坐标不能为空")
+//    @NotNull(message = "A坐标不能为空")
     Double A;
-    @NotNull(message = "B坐标不能为空")
+//    @NotNull(message = "B坐标不能为空")
     Double B;
 
-    @NotNull(message = "纬度不能为空")
+//    @NotNull(message = "纬度不能为空")
     Double lat;
-    @NotNull(message = "经度不能为空")
+//    @NotNull(message = "经度不能为空")
     Double lng;
 
-    @NotBlank(message = "发现位置不能为空")
+//    @NotBlank(message = "发现位置不能为空")
     String location;
 
-    @NotBlank
+//    @NotBlank
     String pictureUrl;
 
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer type;
 
     @FilterFiled(type = FilterTypeEnum.EQ)
-    Integer sectionId;
+    String sectionId;
 
     @FilterFiled(type = FilterTypeEnum.EQ)
-    Integer sectionName;
-    @NotNull(message = "是否需要修改不能为空")
+    String sectionName;
+    @FilterFiled(type = FilterTypeEnum.EQ)
     Integer rectify;
 
-    @FilterFiled(type = FilterTypeEnum.LIKE)
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    @TableField(value = "`status`")
     Integer status;
     @FilterFiled(type = FilterTypeEnum.EQ)
     String rectifyDepartment;
@@ -82,11 +83,10 @@ public class Problem extends BaseModel {
 
     //分配状态
     @FilterFiled(type = FilterTypeEnum.EQ)
-    Integer AssignStatus;
+    Integer assignStatus;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    @NotNull(message = "整改时间不能为空")
-    Date rectifyTime;
+    String rectifyTime;
 
     @FilterFiled(type = FilterTypeEnum.EQ)
     String supervisor;

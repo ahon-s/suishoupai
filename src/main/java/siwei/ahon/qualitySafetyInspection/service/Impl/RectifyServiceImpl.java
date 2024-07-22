@@ -42,10 +42,10 @@ public class RectifyServiceImpl implements RectifyService {
         Problem problem = problemMapper.selectById(rectify.getProblemId());
         if (isEmpty(problem)) throw new BaseException("不存在对应问题");
         if (problem.getStatus() == 3) throw new BaseException("问题已归档");
-        problem.setStatus(2);
+        if (problem.getStatus() == 4) throw new BaseException("问题待审核");
+        problem.setStatus(4);
         rectify.setStatus(1);
         problemMapper.updateById(problem);
-        if (StringUtils.isEmpty(rectify.getNickName())) rectify.setNickName(UserLoginInfo(request));
         rectifyMapper.insert(rectify);
         return rectify.getId();
     }

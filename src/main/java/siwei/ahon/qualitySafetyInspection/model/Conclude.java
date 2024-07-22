@@ -28,20 +28,22 @@ public class Conclude extends BaseModel {
     @NotBlank(message = "结办id不能为空")
     String concluderId;
 
-    @NotBlank(message = "问题id不能为空")
+    @NotNull(message = "问题id不能为空")
     Integer problemId;
-    @NotBlank(message = "确认审核记录id不能为空")
-    Integer confirmVerifyId;
-    @NotBlank(message = "整改记录id不能为空")
-    Integer rectifyId;
-    @NotBlank(message = "审核记录id不能为空")
-    Integer verifyId;
+//    @NotNull(message = "确认审核记录id不能为空")
+//    Integer confirmVerifyId;
+//    @NotNull(message = "整改记录id不能为空")
+//    Integer rectifyId;
+//    @NotNull(message = "审核记录id不能为空")
+//    Integer verifyId;
 
 
     String description;
 
     //1是 2否
-    @NotBlank(message = "审核记录id不能为空")
+    @NotNull(message = "审阅状态不能为空")
+//    @FilterFiled(type = FilterTypeEnum.EQ)
+//    @TableField(value = "`status`")
     Integer status;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @TableField(fill = FieldFill.INSERT)

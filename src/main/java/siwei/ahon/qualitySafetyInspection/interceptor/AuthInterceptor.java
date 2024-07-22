@@ -37,38 +37,38 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String token = request.getHeader("token");
-        if (isEmpty(token)) throw new BaseException("请传入用户token");
-        if (redisUtils.hasKey(token)) {
-            JSONObject bodyObject = (JSONObject) JSONObject.toJSON(redisUtils.get(token));
-            String status = bodyObject.getString("status");
-            if (!status.equals("0")||isEmpty(bodyObject.getString("data"))){
-                throw new BaseException("用户token失效");
-            }
-            return true;
-        }
-        JSONObject requestJson = new JSONObject();
-        requestJson.put("token",token);
-        HttpRequest authRequest = HttpRequest.post(authAddress).body(requestJson.toJSONString());
-        String body = authRequest.execute().body();
-        JSONObject bodyJson = JSONObject.parseObject(body);
-//        System.out.println(bodyJson);
-        String status = bodyJson.getString("status");
-        String data = bodyJson.getString("data");
-//        System.out.println(bodyJson.getString("sda"));
-        if (!status.equals("0")){
-            throw new BaseException("用户token失效");
-        }
-        if (isEmpty(data)){
-            throw new BaseException("用户token失效");
-        }
-//        String tokenTimeOut = bodyJson.getJSONObject("data").getString("tokenTimeOut");
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//        long timeOut = simpleDateFormat.parse(tokenTimeOut).getTime();
-//        long nowTime = System.currentTimeMillis();
-        redisUtils.set(token,bodyJson);
-        redisUtils.expire(token,60*10);
-//        redisUtils.expire(token,(timeOut-nowTime)/1000);
+//        String token = request.getHeader("token");
+//        if (isEmpty(token)) throw new BaseException("请传入用户token");
+//        if (redisUtils.hasKey(token)) {
+//            JSONObject bodyObject = (JSONObject) JSONObject.toJSON(redisUtils.get(token));
+//            String status = bodyObject.getString("status");
+//            if (!status.equals("0")||isEmpty(bodyObject.getString("data"))){
+//                throw new BaseException("用户token失效");
+//            }
+//            return true;
+//        }
+//        JSONObject requestJson = new JSONObject();
+//        requestJson.put("token",token);
+//        HttpRequest authRequest = HttpRequest.post(authAddress).body(requestJson.toJSONString());
+//        String body = authRequest.execute().body();
+//        JSONObject bodyJson = JSONObject.parseObject(body);
+////        System.out.println(bodyJson);
+//        String status = bodyJson.getString("status");
+//        String data = bodyJson.getString("data");
+////        System.out.println(bodyJson.getString("sda"));
+//        if (!status.equals("0")){
+//            throw new BaseException("用户token失效");
+//        }
+//        if (isEmpty(data)){
+//            throw new BaseException("用户token失效");
+//        }
+////        String tokenTimeOut = bodyJson.getJSONObject("data").getString("tokenTimeOut");
+////        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+////        long timeOut = simpleDateFormat.parse(tokenTimeOut).getTime();
+////        long nowTime = System.currentTimeMillis();
+//        redisUtils.set(token,bodyJson);
+//        redisUtils.expire(token,60*10);
+////        redisUtils.expire(token,(timeOut-nowTime)/1000);
         return true;
     }
 

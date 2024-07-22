@@ -24,20 +24,27 @@ public class ConfirmVerify extends BaseModel {
     @TableId(type = IdType.AUTO)
     @FilterFiled(type = FilterTypeEnum.EQ)
     Integer id;
+    @FilterFiled(type = FilterTypeEnum.EQ)
     @NotBlank(message = "确认人为空")
     String confirmer;
+    @FilterFiled(type = FilterTypeEnum.EQ)
     @NotBlank(message = "确认人id不能为空")
     String confirmerId;
-    @NotBlank(message = "问题不能为空")
+    @FilterFiled(type = FilterTypeEnum.EQ)
+    @NotNull(message = "问题不能为空")
     Integer problemId;
-    @NotNull(message = "整改id不能为空")
-    Integer rectifyId;
-    @NotNull(message = "审阅id不能为空")
-    Integer verifyId;
+//    @FilterFiled(type = FilterTypeEnum.EQ)
+//    @NotNull(message = "整改id不能为空")
+//    Integer rectifyId;
+//    @FilterFiled(type = FilterTypeEnum.EQ)
+//    @NotNull(message = "审阅id不能为空")
+//    Integer verifyId;
 
     String description;
 
     //1是 2否
+//    @FilterFiled(type = FilterTypeEnum.EQ)
+//    @TableField(value = "`status`")
     Integer status;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")

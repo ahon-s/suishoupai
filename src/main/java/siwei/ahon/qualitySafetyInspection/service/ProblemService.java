@@ -15,6 +15,7 @@ public interface ProblemService {
 
     Integer addProblemDailyInspection(Problem problem);
 
+    Integer addProblemDailyCheck(Problem problem);
 
     Integer addProblemFreePhoto(Problem problem);
 
@@ -26,8 +27,9 @@ public interface ProblemService {
 
     List<ProblemType> getProblemType();
 
-    List<ProblemStatistics> getProblemStatistics(Integer sectionId,  PageFilterPojo pf);
+    List<ProblemStatistics> getProblemStatistics(String sectionId,  PageFilterPojo pf);
 
+    void getExcelFile(Problem problem, PageFilterPojo pf);
 //    //撤销问题
 //    void revokeProblem(Problem problem);
 }

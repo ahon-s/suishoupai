@@ -47,15 +47,19 @@ public class ConcludeServiceImpl implements ConcludeService {
             updateWrapper.set(Problem::getStatus,3);
             problemMapper.update(null,updateWrapper);
             //修改审核意见状态 2 结办通过
-            updateWrapper2.eq(ConfirmVerify::getId,conclude.getConfirmVerifyId());
-            updateWrapper2.set(ConfirmVerify::getStatus,2);
-            confirmVerifyMapper.update(null,updateWrapper2);
+//            updateWrapper2.eq(ConfirmVerify::getId,conclude.getConfirmVerifyId());
+//            updateWrapper2.set(ConfirmVerify::getStatus,2);
+//            confirmVerifyMapper.update(null,updateWrapper2);
+
+//            updateWrapper1.eq(Verify::getId,conclude.getVerifyId());
+//            updateWrapper1.set(Verify::getStatus,3);
+//            verifyMapper.update(null,updateWrapper1);
         }
         if (status == 2){
             //修改审核意见状态   3结办不通过
-            updateWrapper2.eq(ConfirmVerify::getId,conclude.getConfirmVerifyId());
-            updateWrapper2.set(ConfirmVerify::getStatus,3);
-            confirmVerifyMapper.update(null,updateWrapper2);
+//            updateWrapper2.eq(ConfirmVerify::getId,conclude.getConfirmVerifyId());
+//            updateWrapper2.set(ConfirmVerify::getStatus,3);
+//            confirmVerifyMapper.update(null,updateWrapper2);
         }
         int insert = concludeMapper.insert(conclude);
         return insert;

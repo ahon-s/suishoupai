@@ -46,7 +46,7 @@ public class AuthAop {
         Integer problemId = (Integer) request.getAttribute("problemId");
         Problem problem = problemMapper.selectById(problemId);
         if (isEmpty(problem)) throw new BaseException("对应的问题不存在");
-        if (!validPermission(problem.getSectionId())) throw new BaseException("不在对应标段，权限不足");
+//        if (!validPermission(problem.getSectionId())) throw new BaseException("不在对应标段，权限不足");
     }
 
 
