@@ -37,8 +37,6 @@ public class AcceptProblem extends BaseModel {
 
     String description;
 
-
-
     @FilterFiled(type = FilterTypeEnum.EQ)
     String  buildName;
 
